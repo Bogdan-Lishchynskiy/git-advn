@@ -1,0 +1,3 @@
+[submodule "angular_example"]
+	path = angular_example
+	url = https://github.com/pragdev/angular_example.git
