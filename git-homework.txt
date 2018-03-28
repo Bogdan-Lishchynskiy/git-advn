@@ -1,0 +1,107 @@
+Task 1 ."Work with branches"
+
+git clone https://github.com/Bogdan-Lishchynskiy/git-advn.git
+cd git-advn
+git checkout -b architecture
+mkdir uploads
+mkdir assets
+touch index.html
+git add .
+git commit -m "add new folder html files"
+git push origin architecture
+cd assets
+touch all.js
+touch some.js
+cd uploads
+touch some.txt
+git add .
+git commit -m "added new files"
+git push origin architecture
+git st
+echo "uploads/" > .gitignore
+git add .
+git commit -m "added ignore file"
+git push origin architecture
+git checkout master
+git fetch
+git merge origin/architecture
+git push
+git branch --delete architecture
+
+Task 2 ."Rebase"
+
+git checkout -b develop
+git checkout master
+git add .
+git commit -m "added new text html file"
+git add .
+git commit -m "added new text txt file"
+git add .
+git commit -m "added new text to txt "
+git checkout develop
+git st
+git rebase master
+git add .
+git commit -m "added new file style.css"
+git checkout master
+git st
+git fetch
+git merge develop
+git st
+git br -D develop
+git push origin master
+
+Task 3 ."Tag"
+
+mkdir point
+git add .
+git commit -m "create point folder"
+cd point
+touch calc.js
+git add .
+git commit -m "added to point folder calc.js file"
+git tag -a v1.4 -m 'my version 1.4'
+git push origin v1.4
+
+Task 4 ."Submodule"
+
+git submodule add https://github.com/pragdev/angular_example.git
+git st
+git add .
+git ci -m "added first submodule"
+git push origin master
+
+Task 5 ."Git Pages"
+
+git checkout -b gh-pages
+touch index.html
+echo "<h1> My gh-pages file </h1>" > gh-pages.html
+git add .
+git commit -m "added gh-pages file html"
+git push origin gh-pages
+https://bogdan-lishchynskiy.github.io/git-advn/
+git add .
+git commit -m "change hello to hello world"
+git push origin gh-pages
+
+Task 6 ."Conflict"
+
+echo "hello conflict" > file.txt
+git st
+git br
+git add .
+git ci -m "added file.txt"
+git checkout -b conflictbr
+echo "Conflict will be resolved" > file.txt
+git add .
+git ci -m "added new text to file.txt to make conflict"
+git checkout master
+git fetch
+git merge conflictbr
+Updating d1d4a8e..6a3f057
+Fast-forward
+file.txt | Bin 34 -> 56 bytes
+git push origin master
+
+
+
